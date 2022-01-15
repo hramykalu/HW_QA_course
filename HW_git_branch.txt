@@ -1,0 +1,106 @@
+GitHub. HW_2
+1. На локальном репозитории сделать ветки для:
+- Postman 
+--git branch Postman
+- Jmeter
+--git branch Jmeter
+- CheckLists
+--git branch CheckLists
+- Bag Reports
+--git branch Bug_Reports
+- SQL
+--git branch SQL
+- Charles
+--git branch Charles
+- Mobile testing
+--git branch Mobile_testing
+
+2. Запушить все ветки на внешний репозиторий
+-- git push -u origin Postman
+-- git push -u origin Jmeter
+-- git push -u origin CheckLists
+-- git push -u origin Bug_Reports
+-- git push -u origin SQL
+-- git push -u origin Charles
+-- git push -u origin Mobile_testing
+
+3. В ветке Bug_Reports сделать текстовый документ со структурой баг репорта:
+-- git checkout Bug_Reports
+-- touch Bug_report_structure.txt
+-- vim Bug_report_structure.txt + i
+
+Bug report structure and example:
+1) id - 101;
+2) name - Main Page is not translated when language is changed
+3) project - New Project;
+4) version - 5.02;
+5) environment - Windows 10 Pro v.20H2 , Chrome 97.0.4692.71;
+6) steps_to_reproduce: 
+  1) Open the Main Page ,
+  2) Change a language in "language" drop-down list ,
+7) expected_result - Main Page is translated into choosed language;
+8) actual_result -  Main Page remains in default language (English);
+9) reproducibility - always;
+10) severity - major;
+11) priority - normal;
+12) status - assigned;
+13) author - hramukalu;
+14) assignee - ivanovmd;
+15) attachment - screencast_101.mp4.
+
+esc :wq
+
+4. Запушить структуру багрепорта на внешний репозиторий
+-- git add Bug_report_structure.txt
+-- git commit -m "Create Bug_report_structure.txt"
+-- git push
+
+5. Вмержить ветку Bag Reports в Main
+-- git checkout main
+-- git merge Bug_Reports 
+6. Запушить main на внешний репозиторий.
+-- git push
+7. В ветке CheckLists набросать структуру чек листа.
+-- git checkout CheckLists 
+-- touch Checklist_structure.txt
+-- vim Checklist_structure.txt + i
+
+Checklist structure:
+1)Number
+2)Description
+3)Status
+4)Comments
+
+Login form checklist (example):
+1) Login with a valid username and valid password.
+2) Login with a valid username and invalid password.
+3) Login with a invalid username and valid password.
+4) Login with a blank username and blank password fields.
+5) Check the ‘Forgot Password’ functionality.
+6) Check the messages for invalid login.
+7) Check the ‘Remember Me’ functionality.
+8) Data in password field is visible as asteriks signs.
+9) Change password, try to login with new one.
+10) Change password, try to login with old one.
+11) Login with valid credentials after deletion of user account.
+12) Check if a user cannot enter the characters more than the specified range in each field (Username and Password).
+13) Check the login page by pressing ‘Back button’ of the browser. It should not allow you to enter into the system once you log out.	
+14) Login with different credentials from different browsers on one computer.
+15) Verify if a user should not be allowed to log in with different credentials from the same browser at the same time.	
+16) Verify if a user should be able to login with the same credentials in different browsers at the same time.	
+17) Verify the Login page against SQL injection attack.	
+18) Verify the implementation of SSL certificate.
+19) Verify the “Keep me logged in”  functionality.
+20) Check how much time the application is taking to load the home page after entering the valid user name and password in the login page.
+
+:wq
+
+8. Запушить структуру на внешний репозиторий
+-- git add Checklist_structure.txt
+-- git commit -m "Create Checklist_structure.txt"
+-- git push
+9. На внешнем репозитории сделать Pull Request ветки CheckLists в main
+Во вкладке Pull Requests подтвердить слияние с веткой main.
+10. Синхронизировать Внешнюю и Локальную ветки Main
+-- git pull
+
