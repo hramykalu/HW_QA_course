@@ -1,0 +1,16 @@
+Bug report structure:
+1) id ;
+2) name;
+3) project ;
+4) version ;
+5) environment;
+6) steps_to_reproduce; 
+7) expected_result;
+8) actual_result;
+9) reproducibility;
+10) severity;
+11) priority;
+12) status;
+13) author;
+14) assignee;
+15) attachment.

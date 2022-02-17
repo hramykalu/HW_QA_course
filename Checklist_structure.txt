@@ -1,0 +1,5 @@
+Checklist structure:
+1)Number;
+2)Description;
+3)Status;
+4)Comments.
