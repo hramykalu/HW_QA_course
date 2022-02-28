@@ -204,7 +204,7 @@ role_id int not null,
 foreign key (employee_id) 
 references employees (id),
 foreign key (role_id) 
-references roles_employee (id)
+references roles (id)
 );
 
 -- 11) Fill in the table roles_employee with 40 lines:
