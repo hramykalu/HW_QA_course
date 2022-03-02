@@ -19,7 +19,7 @@ values
 (default, 'Vergie Leuschke'),
 (default, 'Hank Mraz'),
 (default, 'Ottis Treutel'),
-(default, 'Iva D'Amore'),
+(default, 'Iva D Amore'),
 (default, 'Caleigh Marquardt'),
 (default, 'Dr. Harley Kuphal'),
 (default, 'Hassie Hermann'),
@@ -90,7 +90,7 @@ monthly_salary int not null
 
 -- 4) Fill in table salary with 15 lines;
 
- insert into salary(id, mounthly_salary)
+ insert into salary(id, monthly_salary)
  values (default, 1000),
  (default, 1100),
  (default, 1200),
