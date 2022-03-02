@@ -1,24 +1,24 @@
---1. Вывести всех работников чьи зарплаты есть в базе, вместе с зарплатами.
+--1. Display all employees whose salaries are in the database, along with their salaries.
  
  select e.employee_name, s.monthly_salary from
  employees  e join employee_salary  es on e.id = es.employee_id
  join salary s on es.salary_id = s.id; 
  
- --2. Вывести всех работников у которых ЗП меньше 2000.
+ --2. Display all employees whose salary is less than 2000.
 
  select employees.employee_name, salary.monthly_salary from
  employees  join employee_salary on employees.id = employee_salary.employee_id
  left join salary on employee_salary.salary_id = salary.id
  where salary.monthly_salary < 2000;
  
- -- 3. Вывести все зарплатные позиции, но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
+ -- 3. Display all salary positions, but no employee is assigned to them. (There is a salary position, but it is not clear who receives it.)
 
  select salary.monthly_salary from
  salary left join employee_salary on salary.id = employee_salary.salary_id
  left join employees on employee_salary.employee_id = employees.id 
  where employees.employee_name is null;
 
- --4. Вывести все зарплатные позиции  меньше 2000 но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
+ --4. Display all salary positions less than 2000, but no employee has been assigned to them. (There is a salary position, but it is not clear who receives it.)
 
  select salary.monthly_salary from
  salary left join employee_salary on salary.id = employee_salary.salary_id
@@ -26,14 +26,14 @@
  where employees.employee_name is null
  and salary.monthly_salary < 2000;
 
- --5. Найти всех работников кому не начислена ЗП.
+ --5. Find all employees who haven't got any salary position.
 
  select employees.employee_name from 
  employees left join employee_salary on employees.id = employee_salary.employee_id
  left join salary on salary.id=employee_salary.salary_id
  where salary.monthly_salary is null;
 
- --6. Вывести всех работников с названиями их должности.
+ --6. Display all employees and their roles.
 
 select e.employee_name, r.role_name from 
 employees as e left join roles_employee as re 
@@ -41,7 +41,7 @@ on e.id=re.employee_id
 left join roles as r 
 on re.role_id=r.id;
 
- --7. Вывести имена и должность только Java разработчиков.
+ --7. Display names and roles of Java developers.
 
 select e.employee_name, r.role_name from 
 employees as e left join roles_employee as re 
@@ -50,7 +50,7 @@ left join roles as r
 on re.role_id=r.id
 where r.role_name ilike '%Java developer%';
 
- --8. Вывести имена и должность только Python разработчиков.
+ --8. Display names and roles of Pethon developers.
 
 select e.employee_name, r.role_name from 
 employees as e left join roles_employee as re 
@@ -59,7 +59,7 @@ left join roles as r
 on re.role_id=r.id
 where r.role_name ilike '%Python developer%';
 
- -- 9. Вывести имена и должность всех QA инженеров.
+ -- 9. Display names and roles of QA engineers.
 
 select e.employee_name, r.role_name from 
 employees as e left join roles_employee as re 
@@ -68,7 +68,7 @@ left join roles as r
 on re.role_id=r.id
 where r.role_name ilike '%QA%';
 
- --10. Вывести имена и должность ручных QA инженеров.
+ --10. Display names and roles of manual QA engineers.
 
 select e.employee_name, r.role_name from 
 employees as e left join roles_employee as re 
@@ -77,7 +77,7 @@ left join roles as r
 on re.role_id=r.id
 where r.role_name ilike '%Manual QA%';
 
- --11. Вывести имена и должность автоматизаторов QA
+ --11. Display names and roles of automation QA engineers.
 
 select e.employee_name, r.role_name from 
 employees as e left join roles_employee as re 
@@ -86,7 +86,8 @@ left join roles as r
 on re.role_id=r.id
 where r.role_name ilike '%Automation QA%';
 
- --12. Вывести имена и зарплаты Junior специалистов
+ --12. Display names and salaries of Junior specialists.
+ 
 select s.monthly_salary, e.employee_name from 
 salary as s right join employee_salary as es 
 on s.id = es.salary_id 
@@ -99,7 +100,7 @@ on re.role_id = r.id
 where r.role_name ilike '%Junior%' 
 ;
  
---13. Вывести имена и зарплаты Middle специалистов
+--13. Display names and salaries of Middle specialists.
 
 select s.monthly_salary, e.employee_name from 
 salary as s right join employee_salary as es 
@@ -114,7 +115,7 @@ where r.role_name ilike '%Middle%'
 ;
 
 
- --14. Вывести имена и зарплаты Senior специалистов
+ --14. Display names and salaries of Senior specialists.
 
 select s.monthly_salary, e.employee_name from 
 salary as s right join employee_salary as es 
@@ -129,7 +130,7 @@ where r.role_name ilike '%Senior%'
 ;
 
 
- --15. Вывести зарплаты Java разработчиков
+ --15. Display   Java developers salaries.
 
 select s.monthly_salary from 
 salary as s right join employee_salary as es 
@@ -141,7 +142,7 @@ on re.role_id = r.id
 where r.role_name ilike '%Java developer'
 ;
 
- --16. Вывести зарплаты Python разработчиков
+ --16. Display   Python developers salaries.
 
 select s.monthly_salary from 
 salary as s right join employee_salary as es 
@@ -153,7 +154,7 @@ on re.role_id = r.id
 where r.role_name ilike '%Python developer%' 
 ;
 
--- 17. Вывести имена и зарплаты Junior Python разработчиков
+-- 17. Display   Junior Python developers names and salaries
 
 select s.monthly_salary, e.employee_name from 
 salary as s right join employee_salary as es 
@@ -167,7 +168,7 @@ on re.role_id = r.id
 where r.role_name ilike '%Junior Python developer%' 
 ;
 
- --18. Вывести имена и зарплаты Middle JS разработчиков
+ --18. Display   Middle JS developers names and salaries
 
 select s.monthly_salary, e.employee_name from 
 salary as s right join employee_salary as es 
@@ -180,7 +181,7 @@ left join roles as r
 on re.role_id = r.id
 where r.role_name ilike 'Middle Javascript developer' 
 ;
- --19. Вывести имена и зарплаты Senior Java разработчиков
+ --19. Display   Senior Java developers names and salaries.
 
  select s.monthly_salary, e.employee_name from 
 salary as s right join employee_salary as es 
@@ -193,7 +194,7 @@ left join roles as r
 on re.role_id = r.id
 where r.role_name like 'Senior Java developer' 
 ;
- --20. Вывести зарплаты Junior QA инженеров
+ --20. Display Junior QA engineers  salaries.
 
 select s.monthly_salary from 
 salary as s right join employee_salary as es 
@@ -205,7 +206,7 @@ on re.role_id = r.id
 where r.role_name like '%Junior%QA engineer' 
 ;
  
- --21. Вывести среднюю зарплату всех Junior специалистов
+ --21. Display   middle Junior specialists salary.
 
 select avg(s.monthly_salary) from 
 salary as s right join employee_salary as es 
@@ -216,7 +217,7 @@ left join roles as r
 on re.role_id = r.id
 where r.role_name like '%Junior%' 
 ;
- --22. Вывести сумму зарплат JS разработчиков
+ --22. Display sum of JS developers salaries.
 
 select sum(s.monthly_salary) from 
 salary as s right join employee_salary as es 
@@ -228,7 +229,8 @@ on re.role_id = r.id
 where r.role_name like '%Javascript%' 
 ;
 
- --23. Вывести минимальную ЗП QA инженеров
+ --23. Display minimal QA engineers salary
+ 
 select min(s.monthly_salary) from 
 salary as s right join employee_salary as es 
 on s.id = es.salary_id 
@@ -239,7 +241,7 @@ on re.role_id = r.id
 where r.role_name like '%QA%' 
 ;
 
- --24. Вывести максимальную ЗП QA инженеров
+ --24. Display the maximum salary of QA engineers. 
  
  select max(s.monthly_salary) from 
 salary as s right join employee_salary as es 
@@ -251,7 +253,7 @@ on re.role_id = r.id
 where r.role_name like '%QA%' 
 ;
 
- --25. Вывести количество QA инженеров
+ --25. Display the amount of QA engineers
 
 select count(re.role_id) from 
 roles_employee as re left join roles as r 
@@ -259,7 +261,7 @@ on  re.role_id = r.id
 where r.role_name like '%QA%'
 ;
 
- --26. Вывести количество Middle специалистов.
+ --26. Display the amount of  Middle specialists.
  
  select count(re.role_id) from 
 roles_employee as re left join roles as r 
@@ -267,7 +269,7 @@ on  re.role_id = r.id
 where r.role_name like '%Middle%'
 ;
  
- --27. Вывести количество разработчиков
+ --27. Display the amount of developers.
 
  select count(re.role_id) from 
 roles_employee as re left join roles as r 
@@ -275,7 +277,7 @@ on  re.role_id = r.id
 where r.role_name like '%developer%'
 ;
  
- --28. Вывести фонд (сумму) зарплаты разработчиков.
+ --28. Display the sum of developers salaries.
  
 select sum(s.monthly_salary) from
  salary as s right join employee_salary as es
@@ -286,7 +288,7 @@ select sum(s.monthly_salary) from
  on re.role_id = r.id 
  where r.role_name like '%developer%';
  
- --29. Вывести имена, должности и ЗП всех специалистов по возрастанию
+ --29. Display all employees names, roles and salaries ordered ascendently
 
 select e.employee_name, r.role_name, s.monthly_salary from 
 salary as s right join employee_salary as es 
@@ -299,7 +301,7 @@ left join roles as r
 on re.role_id = r.id
 order by s.monthly_salary;
 
- --30. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП от 1700 до 2300
+ --30. Display all employees names, roles and salaries ordered ascendently who have salary position between 1700 and 2300;
  
 select e.employee_name, r.role_name, s.monthly_salary from 
 salary as s right join employee_salary as es 
@@ -313,7 +315,7 @@ on re.role_id = r.id
 where s.monthly_salary between 1700 and 2300
 order by s.monthly_salary;
  
- --31. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП меньше 2300
+ --31.  Display all employees names, roles and salaries ordered ascendently who have salary position less than 2300
 
  select e.employee_name, r.role_name, s.monthly_salary from 
 salary as s right join employee_salary as es 
@@ -327,7 +329,7 @@ on re.role_id = r.id
 where s.monthly_salary < 2300
 order by s.monthly_salary;
 
- --32. Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП равна 1100, 1500, 2000
+ --32. Display all employees names, roles and salaries ordered ascendently who have salary position 1100, 1500, 2000.
 
 select e.employee_name, r.role_name, s.monthly_salary from 
 salary as s right join employee_salary as es 
